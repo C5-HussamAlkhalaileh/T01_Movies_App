@@ -1,10 +1,14 @@
-
 import './App.css';
+import Dashbourd from './component/Dashbourd';
+
 
 function App() {
   return (
  
     <div className="App">
+      
+       <Dashbourd />
+
 
     </div>
 

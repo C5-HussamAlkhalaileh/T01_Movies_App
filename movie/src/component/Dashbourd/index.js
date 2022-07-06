@@ -8,9 +8,11 @@ const Dashbourd =()=>{
     const [Dashbourd,serDashbourd]=useState("");
 
     useEffect(() => {
-        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=1bfa430aada4409bfa6a3c5528128e8a`).then((res) => {
-          setUsers(res.data);
-        });
+        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=1bfa430aada4409bfa6a3c5528128e8a`)
+        .then((res) => {
+            serDashbourd(res.data);
+        })
+         
     }, []);
 
 
