@@ -1,27 +1,33 @@
-//import React, { useState, useEffect } from "react";
-//import axios from "axios";
-//import "./App.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./style.css";
 
+const MovieDetails = () => {
+  const [moviee, setmoviee] = useState("");
 
-//const Deatails =()=>{
+  const getDetailsMovie = () => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/475557?language=en-US&api_key=1bfa430aada4409bfa6a3c5528128e8a`
+      )
+      .then((res) => {
+        setmoviee(res.data.results);
+      });
+  };
+  useEffect(() => {
+    getDetailsMovie();
+  }, []);
 
-//    const [Deatails,setDeatails]=useState("");
+  return (
+    <div>
+      <button> Back To Home</button>
+      <button> Go To Favorites </button>
+      <button> Add To Favorites </button>
+       
+    </div>
+  );
+};
 
-//    useEffect(() => {
-//        axios.get("https://api.themoviedb.org/3/movie/475557?language=en-US&api_key=1bfa430aada4409bfa6a3c5528128e8a")
-//        .then((res) => {
-//            serDashbourd(res.data);
-//        })
-         
-//    }, []);
-
-
-//return (
-//    <div>
-
-//    </div>
-//)
-
-//}
-
-//export default Deatails
+//component show movie description
+//favorite button => add movie fav list
+export default MovieDetails;

@@ -24,21 +24,23 @@ const Dashbourd = () => {
       <button> Faviarote</button>
       <h1 className="title">Movies</h1>
       {/*loop => movies => img, title, description */}
-
+      <div className="moviebox">
       {movies &&
-        movies.map((movie) => {
+        movies.map((movie,index) => {
           return (
-            <div className="movie-continer">
-              <img
+            <div className="movie-continer" key={index}>
+              <img 
                 className="moive-img"
                 src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}
-`}
-              ></img>
-              <h3>{movie.original_title}</h3>
+`}/>
+              
+             
+              <h3 className="movie-title">{movie.original_title}</h3>
               <p>{movie.overview}</p>
             </div>
           );
         })}
+        </div>
     </div>
   );
 };

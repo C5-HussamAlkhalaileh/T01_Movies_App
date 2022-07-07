@@ -1,5 +1,6 @@
 import './App.css';
 import Dashbourd from './component/Dashbourd';
+import MovieDetails from './component/Details';
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
       
        <Dashbourd />
+       {/*<MovieDetails/>*/}
 
 
     </div>
