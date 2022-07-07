@@ -2,46 +2,47 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./style.css";
 
+const Dashbourd = () => {
+  const [movies, setMovies] = useState("");
 
-const Dashbourd =()=>{
+  const getAllMovies = () => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/popular?api_key=1bfa430aada4409bfa6a3c5528128e8a`
+      )
+      .then((res) => {
+        setMovies(res.data.results);
+      });
+  };
+  useEffect(() => {
+    getAllMovies();
+  }, []);
 
-    const [Dashbourd,setDashbourd]=useState("");
-
-    useEffect(() => {
-        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=1bfa430aada4409bfa6a3c5528128e8a`)
-        .then((res) => {
-            setDashbourd(res.data.results);
-
-        })
-         
-    }, []);
-
-
-return (
+  return (
     <div>
-        <button> Home</button>
-        <button> Faviarote</button>
-        <h1>Movies</h1>
+      <button> Home</button>
+      <button> Faviarote</button>
+      <h1 className="title">Movies</h1>
+      {/*loop => movies => img, title, description */}
 
-        {/*{posts.map((post, i) => {
+      {movies &&
+        movies.map((movie) => {
           return (
-            <div>
-               <img>{backdrop_path}</img> 
-             <h1>{title}</h1>
-              <p>{genre_ids}</p>
-              <p>{popularity}</p>
-              <p>{vote_count}</p>
+            <div className="movie-continer">
+              <img
+                className="moive-img"
+                src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}
+`}
+              ></img>
+              <h3>{movie.original_title}</h3>
+              <p>{movie.overview}</p>
             </div>
           );
         })}
-        */}
-
-
-       
-
     </div>
-)
+  );
+};
 
-}
-
-export default Dashbourd
+//component show movie description
+//favorite button => add movie fav list
+export default Dashbourd;
